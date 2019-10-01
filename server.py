@@ -1,6 +1,8 @@
 #! /usr/bin/env python
 
-from backend.app import APP
+from Backend.App_Server import App_Server
+from Backend.Socket_Server import Socket_Server
     
 if __name__ == '__main__':
-   APP.run(debug = True)
+    Socket_Server().run()
+    App_Server.run(debug = True)
