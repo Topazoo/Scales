@@ -1,7 +1,7 @@
 var Fixtures = {
 
     modules: [
-
+        'Sockets_Library'
     ],
 
     widgets: [
@@ -9,7 +9,7 @@ var Fixtures = {
     ],
 
     routes: [
-        
+
     ],
 
     settings: {
