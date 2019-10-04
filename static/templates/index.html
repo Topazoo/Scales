@@ -4,11 +4,35 @@
     <head>
         <!-- FRAMEWORKS -->
         {% include "frameworks.html" %}
+        <!-- STYLING -->
+        <link href="/css/index.css" rel="stylesheet">
     </head>
     <body>
-        <h1>PAGE</h1>
-        <div ng-controller="Weight_Socket">
-            {{ weight }}
+        <div class="header">
+            <h1>Scale Web App Demo</h1>
+        </div>
+        <div class="container">
+            <div ng-controller="Weight_Socket">
+                <br><br>
+                <div class="d-flex justify-content-around">
+                    <h5>{{ weight }}g</h5>
+                </div>
+                <br>
+                <div class="d-flex justify-content-around">
+                    <div class="p-4">
+                        <p>Scale Status: {{ status }}</p>
+                    </div>
+                    <div ng-if="status=='Offline'" class="p-4">
+                        <p ng-click="connect()">Connect</p>
+                    </div>
+                    <div ng-if="status=='Online'" class="p-4">
+                        <p ng-click="disconnect()">Disconnect</p>
+                    </div>
+                    <div class="p-4">
+                        <p ng-click="tare()">Tare</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>
