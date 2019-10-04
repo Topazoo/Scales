@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 
-from backend.Drivers.HX711_Driver import HX711
+from .HX711_Driver import HX711
 import time, random
 try:
     import RPi.GPIO as GPIO

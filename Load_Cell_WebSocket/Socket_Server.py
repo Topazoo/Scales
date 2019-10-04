@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
-from backend.Drivers.Stream_Socket_Driver import Socket_Stream_Server
-from backend.Drivers.Load_Cell_Driver import Dummy_Load_Cell
+from .Drivers.Stream_Socket_Driver import Socket_Stream_Server
+from .Drivers.Load_Cell_Driver import Dummy_Load_Cell
 
 class Load_Cell_Socket(Socket_Stream_Server):
     '''
@@ -17,6 +17,8 @@ class Load_Cell_Socket(Socket_Stream_Server):
     '''
 
     def __init__(self, path:str = '127.0.0.1', port:int = 5001, generator:callable = None, callback:callable = None):
+        self.path = path
+        self.port = port
         self.load_cell = Dummy_Load_Cell()
 
         if not callback:
@@ -27,16 +29,20 @@ class Load_Cell_Socket(Socket_Stream_Server):
 
         super().__init__(path, port, generator, callback)
         
-
     def set_callback(self, callback:callable):
         this.callback = callback
 
     def client(self, socket_request):
-        print(socket_request)
         action = socket_request['action']
 
         if action:
             if action == 'connect':
                 self.load_cell.connect()
 
-        print(action)
+if __name__ == '__main__':
+    websocket_server = Load_Cell_Socket()
+    websocket_server.run()
+
+    print(' * Started Load Cell Websocket Server !')
+    print('    * Path: {}'.format(websocket_server.path))
+    print('    * Port: {}'.format(websocket_server.port))
