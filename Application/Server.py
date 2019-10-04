@@ -1,6 +1,10 @@
 #! /usr/bin/env python
 
-from Drivers.Socket_Scanner import Socket_Scanner
+if __name__ == '__main__':
+    from Drivers.Socket_Scanner import Socket_Scanner
+else:
+    from Application.Drivers.Socket_Scanner import Socket_Scanner
+
 from flask import Flask, render_template, send_from_directory, jsonify
 
 class Application():

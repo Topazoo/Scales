@@ -13,7 +13,7 @@ class Socket_Stream_Server():
         --> [callable] generator - The generator function that supplies values to be
                                    streamed to the client.\n
         --> [callable] callback - A function to call if data is received from the client.
-        --> [bool] daemon - Runs the socket as a daemon (In the background but cleaned when the script completes)
+        --> [bool] daemon - Runs the socket as a daemon (In the background but cleaned when the script completes).\n
     '''
 
     def __init__(self, path:str = '127.0.0.1', port:int = 5001, generator:callable = None, callback:callable = None, daemon:bool=False):
