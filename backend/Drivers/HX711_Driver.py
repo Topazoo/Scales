@@ -1,8 +1,10 @@
-#
+#! /usr/bin/env python
 
-import RPi.GPIO as GPIO
-import time
-import threading
+import time, threading
+try:
+    import RPi.GPIO as GPIO
+except Exception as e:
+    print(' * Module Warning: {}'.format(e))
 
 class HX711:
     def __init__(self, dout, pd_sck, gain=128):
