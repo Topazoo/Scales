@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
-from Backend.Drivers.Stream_Socket_Driver import Socket_Stream_Server
-from Backend.Drivers.Load_Cell_Driver import Dummy_Load_Cell
+from backend.Drivers.Stream_Socket_Driver import Socket_Stream_Server
+from backend.Drivers.Load_Cell_Driver import Dummy_Load_Cell
 
 class Load_Cell_Socket(Socket_Stream_Server):
     '''
