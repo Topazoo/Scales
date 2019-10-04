@@ -20,7 +20,7 @@ angular.module('Sockets_Library', ['ngWebSocket'])
     };
 
     $scope.connect = function() {
-        $scope.socket = $websocket('ws://localhost:5001');
+        $scope.socket = $websocket('ws://10.0.0.166:5001');
         $scope.socket.onError(function(){
            // $scope.connect();
         });

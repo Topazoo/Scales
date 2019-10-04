@@ -1,10 +1,12 @@
 #! /usr/bin/env python
 
-from flask import Flask, render_template, send_from_directory
+from Drivers.Socket_Scanner import Socket_Scanner
+from flask import Flask, render_template, send_from_directory, jsonify
 
 class Application():
     static_root = 'static/'
     server = Flask(__name__, static_url_path='', template_folder='static/templates/')
+    scanner = Socket_Scanner()
 
     def __init__(self, static_root='static/', template_folder='templates/', static_url_path=''):
         Application.static_root = static_root
@@ -27,6 +29,10 @@ class Application():
     @server.route('/css/<path:path>')
     def serve_css(path):
         return send_from_directory(Application.static_root + 'css', path)
+
+    @server.route('/sockets', methods = ['GET'])
+    def get_potential_sockets():
+        return jsonify(paths=Application.scanner.find_potential_sockets())
 
 
 if __name__ == '__main__':
