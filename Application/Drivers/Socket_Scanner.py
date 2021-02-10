@@ -8,7 +8,7 @@ class Socket_Scanner():
         return self.get_device_ips(self.get_default_gateway())
         
     def get_device_ips(self, default_gateway):
-        ips = []
+        ips = set()
 
         if not default_gateway:
             default_gateway = self.get_default_gateway()
@@ -18,7 +18,7 @@ class Socket_Scanner():
                 if 'ipv4' in result['addresses'] and \
                 result['addresses']['ipv4'] != default_gateway and \
                 result['addresses']['ipv4'] not in socket.gethostbyname_ex(socket.gethostname())[-1]:
-                    ips.append(result['addresses']['ipv4'])
+                    ips.add(result['addresses']['ipv4'])
         
         return ips
 
